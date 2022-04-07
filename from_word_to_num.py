@@ -1,9 +1,24 @@
+import argparse
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument('-d','--dic')
+    parser.add_argument('-pre','--pre_order')
+    parser.add_argument('-ord','--normal_order')
+    parser.add_argument('-ord_num','--normal_order_num')
+    parser.add_argument('-pre_num','--pre_order_num')
+
+    args = parser.parse_args()
+    return args
+
 def main():
-    with open('./temp_dic','r') as dic:
-        with open('../span_align/preording_clean_ja','r') as zh:
-            with open('../span_align/normal_ord_clean_ja','r') as ordzh:
-                with open('../span_align/normal_ord_clean_ja_num','w') as ordzhnum:
-                    with open('../span_align/preording_clean_ja_num','w') as zhnum:
+    args=parse_args()
+    with open(args.dic,'r') as dic:
+        with open(args.pre_order,'r') as zh:
+            with open(args.normal_order,'r') as ordzh:
+                with open(args.normal_order_num,'w') as ordzhnum:
+                    with open(args.pre_order_num,'w') as zhnum:
                         dic_lines = dic.readlines()
                         zh_lines = zh.readlines()
                         ordzh_lines = ordzh.readlines()

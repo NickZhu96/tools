@@ -1,7 +1,19 @@
+import argparse
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-d','--dic')
+    parser.add_argument('-t','--test')
+    parser.add_argument('-o','--out')
+    args = parser.parse_args()
+    return args
+
+
 def main():
-    with open('./temp_dic','r') as dic:
-        with open('/root/work/Japanese-ALT-20210218/word-alignment/test.human.ja','r') as ordzh:
-            with open('./test_human_num','w') as ordzhnum:
+    args = parse_args()
+    with open(args.dic,'r') as dic:
+        with open(args.test,'r') as ordzh:
+            with open(args.out,'w') as ordzhnum:
                 dic_lines = dic.readlines()
                 ordzh_lines = ordzh.readlines()
                 a=[]

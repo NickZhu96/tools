@@ -1,6 +1,6 @@
-with open('../test/test_human_18088_epoch10_lr0.0001_embed512_1layer','r') as num:
-    with open('./temp_dic','r') as dic:
-        with open('../test/test_pre_word_human_18088_epoch10_lr0.0001_embed512_1layer','w') as translate:
+with open('../zh_ja_prefix/test/test','r') as num:
+    with open('../zh_ja_prefix/dic_prefix','r') as dic:
+        with open('../zh_ja_prefix/test/test_words','w') as translate:
             dic_lines = dic.readlines()
             b = []
             for i in range(len(dic_lines)):

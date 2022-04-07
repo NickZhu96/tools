@@ -1,7 +1,20 @@
-def extract():
-    with open('/root/work/Japanese-ALT-20210218/word-alignment/train.human.ja','r') as zh:
-            with open('/root/work/Japanese-ALT-20210218/word-alignment/train.human.alignment','r') as align:
-                    with open('../test/normal_ord_human_ja','w') as ordzh:
+import argparse
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument('-i2','--input_r',help='right alignment language data')
+    parser.add_argument('-align','--alignment',help='alignment data')
+    parser.add_argument('-ord','--ord',help='left language ord sentence')
+    
+    args = parser.parse_args()
+    return args
+
+
+def extract(r,a,o):
+    with open(r,'r') as zh:
+            with open(a,'r') as align:
+                    with open(o,'w') as ordzh:
                         for p in range(18088):
                             a = []
                             b = []
@@ -52,6 +65,7 @@ def clear():
         clear.close()
     ord.close()
 def main():
-    extract()
+    args = parse_args()
+    extract(args.input_r,args.alignment,args.ord)
 if __name__ == '__main__':
     main()

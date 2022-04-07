@@ -1,10 +1,24 @@
-def preord():
-    with open('../../Japanese-ALT-20210218/word-alignment/test.human.ja','r') as zh:
-        with open('../../Japanese-ALT-20210218/word-alignment/test.human.en','r') as en:
-            with open('../../Japanese-ALT-20210218/word-alignment/test.human.alignment','r') as align:
-                with open('../../Japanese-ALT-20210218/word-alignment/test_ord_human_en','w') as exen:
-                    with open('../../Japanese-ALT-20210218/word-alignment/test_pre_human_ja','w') as prezh:
-                        for p in range(1018):
+import argparse
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument('-i1','--input_l',help='left alignment language data')
+    parser.add_argument('-i2','--input_r',help='right alignment language data')
+    parser.add_argument('-align','--alignment',help='alignment data')
+    parser.add_argument('-ord','--ord',help='left language ord sentence')
+    parser.add_argument('-pre','--preord',help='right language pre sentence')
+    
+    args = parser.parse_args()
+    return args
+
+def preord(l,r,a,o,p):
+    with open(r,'r') as zh:
+        with open(l,'r') as en:
+            with open(a,'r') as align:
+                with open(o,'w') as exen:
+                    with open(p,'w') as prezh:
+                        for p in range(18088):
 
                             b = []
                             c = []
@@ -53,7 +67,8 @@ def clear():
     prezh.close()
 
 def main():
-    preord()
+    args = parse_args()
+    preord(args.input_l,args.input_r,args.alignment,args.ord,args.preord)
  #   clear()
 if __name__ == '__main__':
     main()

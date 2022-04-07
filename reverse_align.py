@@ -1,5 +1,5 @@
-with open('/root/work/span_align/alignment/edict.en-ja.align','r') as alignment:
-    with open('/root/work/span_align/alignment/edict.ja-en.align','w') as reverse_alignment:
+with open('/root/work/awesome-align/alignment/alt_thja_align','r') as alignment:
+    with open('/root/work/awesome-align/alignment/alt_jath_align','w') as reverse_alignment:
         align_lines = alignment.readlines()
         for align in align_lines:
             a=[]
